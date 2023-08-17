@@ -1,44 +1,43 @@
-function encrypt() {
-    const message = document.getElementById("message").value;
-    const shift = parseInt(document.getElementById("shift").value);
-    const result = document.getElementById("result");
-  
-    let encryptedMessage = "";
-  
-    for (let i = 0; i < message.length; i++) {
-      const charCode = message.charCodeAt(i);
-  
-      if (charCode >= 65 && charCode <= 90) {
-        encryptedMessage += String.fromCharCode(((charCode - 65 + shift) % 26) + 65);
-      } else if (charCode >= 97 && charCode <= 122) {
-        encryptedMessage += String.fromCharCode(((charCode - 97 + shift) % 26) + 97);
+function encriptar() {
+  const mensaje = document.getElementById("mensaje").value;
+  const desplazamiento = parseInt(document.getElementById("desplazamiento").value);
+  const resultado = document.getElementById("resultado");
+
+  let mensajeEncriptado = "";
+
+  for (let i = 0; i < mensaje.length; i++) {
+      const codigoCaracter = mensaje.charCodeAt(i);
+
+      if (codigoCaracter >= 65 && codigoCaracter <= 90) {
+          mensajeEncriptado += String.fromCharCode(((codigoCaracter - 65 + desplazamiento) % 26) + 65);
+      } else if (codigoCaracter >= 97 && codigoCaracter <= 122) {
+          mensajeEncriptado += String.fromCharCode(((codigoCaracter - 97 + desplazamiento) % 26) + 97);
       } else {
-        encryptedMessage += message.charAt(i);
+          mensajeEncriptado += mensaje.charAt(i);
       }
-    }
-  
-    result.value = encryptedMessage;
   }
-  
-  function decrypt() {
-    const message = document.getElementById("message").value;
-    const shift = parseInt(document.getElementById("shift").value);
-    const result = document.getElementById("result");
-  
-    let decryptedMessage = "";
-  
-    for (let i = 0; i < message.length; i++) {
-      const charCode = message.charCodeAt(i);
-  
-      if (charCode >= 65 && charCode <= 90) {
-        decryptedMessage += String.fromCharCode(((charCode - 65 - shift + 26) % 26) + 65);
-      } else if (charCode >= 97 && charCode <= 122) {
-        decryptedMessage += String.fromCharCode(((charCode - 97 - shift + 26) % 26) + 97);
+
+  resultado.value = mensajeEncriptado;
+}
+
+function desencriptar() {
+  const mensaje = document.getElementById("mensaje").value;
+  const desplazamiento = parseInt(document.getElementById("desplazamiento").value);
+  const resultado = document.getElementById("resultado");
+
+  let mensajeDesencriptado = "";
+
+  for (let i = 0; i < mensaje.length; i++) {
+      const codigoCaracter = mensaje.charCodeAt(i);
+
+      if (codigoCaracter >= 65 && codigoCaracter <= 90) {
+          mensajeDesencriptado += String.fromCharCode(((codigoCaracter - 65 - desplazamiento + 26) % 26) + 65);
+      } else if (codigoCaracter >= 97 && codigoCaracter <= 122) {
+          mensajeDesencriptado += String.fromCharCode(((codigoCaracter - 97 - desplazamiento + 26) % 26) + 97);
       } else {
-        decryptedMessage += message.charAt(i);
+          mensajeDesencriptado += mensaje.charAt(i);
       }
-    }
-  
-    result.value = decryptedMessage;
   }
-  
+
+  resultado.value = mensajeDesencriptado;
+}
